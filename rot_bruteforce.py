@@ -1,0 +1,28 @@
+
+def brute_force(text: str) -> str | None:
+    euristic = "flag"
+
+    for key in range(26):
+        flag = []
+        for c in text:
+            if 'A' <= c <= 'Z':
+                char = ((ord(c) - 65) + key) % 26
+                flag.append(chr(char + 65))
+            elif 'a' <= c <= 'z':
+                char = ((ord(c) - 97) + key) % 26
+                flag.append(chr(char + 97))
+            else:
+                flag.append(c)
+        
+        string = "".join(flag)
+        if euristic in string:
+            return string
+
+    return None
+    
+def main():
+    flag = brute_force("mshn{j43z4y_t33az_i4z364}")
+    print(flag)
+
+if __name__ == "__main__":
+    main()
