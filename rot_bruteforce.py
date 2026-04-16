@@ -1,7 +1,6 @@
 
-def brute_force(text: str) -> str | None:
-    euristic = "flag"
-
+def brute_force(text: str, euristic: str = "") -> str | None:
+    results = []
     for key in range(26):
         flag = []
         for c in text:
@@ -15,13 +14,18 @@ def brute_force(text: str) -> str | None:
                 flag.append(c)
         
         string = "".join(flag)
+        
+        if euristic == "":
+            results.append(string)
+            continue
+
         if euristic in string:
             return string
 
-    return None
+    return results
     
 def main():
-    flag = brute_force("mshn{j43z4y_t33az_i4z364}")
+    flag = brute_force("mshn{j43z4y_t33az_i4z364}", "flag")
     print(flag)
 
 if __name__ == "__main__":
